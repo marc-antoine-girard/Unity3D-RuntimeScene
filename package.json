@@ -1,0 +1,14 @@
+{
+  "name": "com.marc-antoine-girard.runtimescene",
+  "displayName": "Runtime Scene",
+  "version": "1.0.0",
+  "unity": "2019.1",
+  "keywords": [
+    "scene",
+    "runtime"
+  ],
+  "author": {
+    "name": "Marc-Antoine Girard",
+    "url": "https://github.com/marc-antoine-girard"
+  }
+}
