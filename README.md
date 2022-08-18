@@ -1,6 +1,12 @@
 # Unity3D-RuntimeScene
 A simple class that lets you reference scenes in the Editor.
 
+## Installation
+
+### Using git
+- In Window -> Package Manager -> Add package from git URL...
+- Paste `https://github.com/marc-antoine-girard/Unity3D-RuntimeScene.git`
+
 ## Usage
 ```csharp
 public class LoadScene : MonoBehaviour
