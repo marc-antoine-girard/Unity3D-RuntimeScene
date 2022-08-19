@@ -7,6 +7,7 @@ namespace ShackLab
 {
 #if UNITY_EDITOR
     using UnityEditor;
+    using UnityEditor.SceneManagement;
 
     public partial class RuntimeScene : ISerializationCallbackReceiver
     {
@@ -65,6 +66,39 @@ namespace ShackLab
 
             return sceneAsset.name;
         }
+
+        private void LoadSceneEditor(LoadSceneParameters parameters)
+        {
+            if (buildIndex < 0)
+            {
+                Log(
+                    $"Scene {sceneAsset.name} is not in the build settings. Consider adding it if you plan on using it in a build",
+                    Color.cyan);
+            }
+
+            EditorSceneManager.LoadSceneInPlayMode(AssetDatabase.GetAssetPath(sceneAsset), parameters);
+        }
+
+        private AsyncOperation LoadSceneAsyncEditor(LoadSceneParameters parameters, bool allowSceneActivation = true)
+        {
+            if (buildIndex < 0)
+            {
+                Log(
+                    $"Scene {sceneAsset.name} is not in the build settings. Consider adding it if you plan on using it in a build",
+                    Color.cyan);
+            }
+
+            AsyncOperation loadSceneAsync =
+                EditorSceneManager.LoadSceneAsyncInPlayMode(AssetDatabase.GetAssetPath(sceneAsset), parameters);
+            loadSceneAsync.allowSceneActivation = allowSceneActivation;
+            return loadSceneAsync;
+        }
+
+        private void Log(object message, Color color)
+        {
+            Debug.LogWarning(
+                $"<color=#{(byte)(color.r * 255f):X2}{(byte)(color.g * 255f):X2}{(byte)(color.b * 255f):X2}>{message}</color>");
+        }
     }
 #endif
 
@@ -76,41 +110,55 @@ namespace ShackLab
 
         public string Name => name;
         public int BuildIndex => buildIndex;
-        
+
         public void LoadScene()
         {
-            SceneManager.LoadScene(buildIndex);
+            LoadSceneInternal(new LoadSceneParameters());
         }
-        
+
         public void LoadScene(LoadSceneMode mode)
         {
-            SceneManager.LoadScene(buildIndex, mode);
+            LoadSceneInternal(new LoadSceneParameters(mode));
         }
-        
+
         public void LoadScene(LoadSceneParameters parameters)
         {
-            SceneManager.LoadScene(buildIndex, parameters);
+            LoadSceneInternal(parameters);
         }
 
         public AsyncOperation LoadSceneAsync(bool allowSceneActivation = true)
         {
-            var loadSceneAsync = SceneManager.LoadSceneAsync(buildIndex);
-            loadSceneAsync.allowSceneActivation = allowSceneActivation;
-            return loadSceneAsync;
+            return LoadSceneAsyncInternal(new LoadSceneParameters(), allowSceneActivation);
         }
-        
+
         public AsyncOperation LoadSceneAsync(LoadSceneMode mode, bool allowSceneActivation = true)
         {
-            var loadSceneAsync = SceneManager.LoadSceneAsync(buildIndex, mode);
-            loadSceneAsync.allowSceneActivation = allowSceneActivation;
-            return loadSceneAsync;
+            return LoadSceneAsyncInternal(new LoadSceneParameters(mode), allowSceneActivation);
         }
-        
+
         public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters, bool allowSceneActivation = true)
         {
+            return LoadSceneAsyncInternal(parameters, allowSceneActivation);
+        }
+
+        private void LoadSceneInternal(LoadSceneParameters parameters)
+        {
+#if UNITY_EDITOR
+            LoadSceneEditor(parameters);
+#else
+            SceneManager.LoadScene(buildIndex, parameters);
+#endif
+        }
+
+        private AsyncOperation LoadSceneAsyncInternal(LoadSceneParameters parameters, bool allowSceneActivation = true)
+        {
+#if UNITY_EDITOR
+            return LoadSceneAsyncEditor(parameters, allowSceneActivation);
+#else
             var loadSceneAsync = SceneManager.LoadSceneAsync(buildIndex, parameters);
             loadSceneAsync.allowSceneActivation = allowSceneActivation;
             return loadSceneAsync;
+#endif
         }
     }
 }
