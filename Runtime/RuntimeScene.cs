@@ -12,16 +12,6 @@ namespace ShackLab
     public partial class RuntimeScene : ISerializationCallbackReceiver
     {
         [SerializeField] private SceneAsset sceneAsset;
-        private static Dictionary<SceneAsset, int> cachedScenes = new Dictionary<SceneAsset, int>();
-
-        [InitializeOnLoadMethod]
-        private static void OnEditorInitializeOnLoad()
-        {
-            OnBuildListChanged();
-
-            EditorBuildSettings.sceneListChanged -= OnBuildListChanged;
-            EditorBuildSettings.sceneListChanged += OnBuildListChanged;
-        }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
@@ -37,23 +27,9 @@ namespace ShackLab
 
         void ISerializationCallbackReceiver.OnAfterDeserialize() { }
 
-        private static void OnBuildListChanged()
-        {
-            int buildIndex = -1;
-            foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
-            {
-                SceneAsset sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
-
-                if (sceneAsset != null)
-                {
-                    cachedScenes.Add(sceneAsset, scene.enabled ? ++buildIndex : -1);
-                }
-            }
-        }
-
         private static int GetBuildIndex(SceneAsset sceneAsset)
         {
-            if (sceneAsset == null || !cachedScenes.TryGetValue(sceneAsset, out var buildIndex))
+            if (sceneAsset == null || !RuntimeSceneUtility.cachedScenes.TryGetValue(sceneAsset, out int buildIndex))
                 return -1;
 
             return buildIndex;

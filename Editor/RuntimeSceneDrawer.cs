@@ -39,7 +39,7 @@ namespace ShackLab
                 {
                     yMin = position.y + 22
                 };
-                EditorGUI.HelpBox(newPos, "Scene is not in the Build", MessageType.Warning);
+                EditorGUI.HelpBox(newPos, "Scene is not in Build Settings", MessageType.Warning);
             }
         }
 
@@ -50,10 +50,7 @@ namespace ShackLab
                 height = EditorGUI.GetPropertyHeight(sceneAssetProp, true)
             };
 
-            using (new EditorGUI.PropertyScope(rect, label, sceneAssetProp))
-            {
-                EditorGUI.PropertyField(rect, sceneAssetProp, label);
-            }
+            EditorGUI.PropertyField(rect, sceneAssetProp, label);
         }
 
         private void Initialize(SerializedProperty property)
