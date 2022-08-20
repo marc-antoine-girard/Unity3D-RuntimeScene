@@ -1,3 +1,10 @@
+### [1.4.3](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.2...v1.4.3) (2022-08-20)
+
+
+### Bug Fixes
+
+* removed RuntimeSceneUtility from build ([19883e2](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/19883e2e6d9f1d8f22980ef5e8928edbad285af9))
+
 ### [1.4.2](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.1...v1.4.2) (2022-08-20)
 
 
