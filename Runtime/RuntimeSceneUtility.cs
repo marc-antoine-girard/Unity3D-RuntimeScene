@@ -16,7 +16,7 @@ namespace ShackLab
 
             EditorBuildSettings.sceneListChanged -= OnBuildListChanged;
             EditorBuildSettings.sceneListChanged += OnBuildListChanged;
-            
+
             EditorApplication.contextualPropertyMenu -= OnPropertyContextMenu;
             EditorApplication.contextualPropertyMenu += OnPropertyContextMenu;
         }
@@ -33,7 +33,7 @@ namespace ShackLab
                     cachedScenes.Add(sceneAsset, scene.enabled ? ++buildIndex : -1);
             }
         }
-        
+
         private static void OnPropertyContextMenu(GenericMenu menu, SerializedProperty property)
         {
             if (property.propertyType != SerializedPropertyType.ObjectReference) return;
@@ -61,6 +61,7 @@ namespace ShackLab
                         }
                     }
                 }
+
                 EditorBuildSettings.scenes = editorBuildSettingsScenes.ToArray();
             });
         }
