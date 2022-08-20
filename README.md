@@ -27,14 +27,17 @@ A simple class that lets you reference scenes in the Editor.
 
 ## Installation
 
-### Using git
+#### Using git
 
 - In Window -> Package Manager -> Add package from git URL...
 - Paste `https://github.com/marc-antoine-girard/Unity3D-RuntimeScene.git`
 
-### Using OpenUPM
+#### Using OpenUPM
 
-> Incoming
+The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+```
+openupm add com.marc-antoine-girard.runtimescene
+```
 
 ## Usage
 
