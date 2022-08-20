@@ -16,16 +16,12 @@
 
 A simple class that lets you reference scenes in the Editor.
 
-Main features:
+### Main features:
 
 - Allows referencing scenes in Unity's Inspector
-  
 - Avoids scene name conflicts when using RuntimeScene methods
-  
 - The resulting RuntimeScene instances in build are super lightweight
-  
 - In the editor, allows loading scene not in Build Settings
-  
 - Add or remove scenes from Build Settings using the Context Menu
   
 
