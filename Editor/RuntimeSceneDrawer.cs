@@ -10,6 +10,8 @@ namespace ShackLab
         private SerializedProperty sceneAssetProp;
         private SerializedProperty buildIndex;
 
+        public override bool CanCacheInspectorGUI(SerializedProperty property) => false;
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             Initialize(property);

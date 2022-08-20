@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +28,7 @@ namespace ShackLab
 
         private static int GetBuildIndex(SceneAsset sceneAsset)
         {
-            if (sceneAsset == null || !RuntimeSceneUtility.cachedScenes.TryGetValue(sceneAsset, out int buildIndex))
+            if (sceneAsset == null || !RuntimeSceneUtility.CachedScenes.TryGetValue(sceneAsset, out int buildIndex))
                 return -1;
 
             return buildIndex;
@@ -131,7 +130,7 @@ namespace ShackLab
 #if UNITY_EDITOR
             return LoadSceneAsyncEditor(parameters, allowSceneActivation);
 #else
-            var loadSceneAsync = SceneManager.LoadSceneAsync(buildIndex, parameters);
+            AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync(buildIndex, parameters);
             loadSceneAsync.allowSceneActivation = allowSceneActivation;
             return loadSceneAsync;
 #endif

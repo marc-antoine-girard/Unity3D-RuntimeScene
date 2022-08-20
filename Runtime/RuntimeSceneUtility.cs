@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace ShackLab
 {
     public static class RuntimeSceneUtility
     {
-        public static Dictionary<SceneAsset, int> cachedScenes = new Dictionary<SceneAsset, int>();
+        public static readonly Dictionary<SceneAsset, int> CachedScenes = new Dictionary<SceneAsset, int>();
 
         [InitializeOnLoadMethod]
         private static void OnEditorInitializeOnLoad()
@@ -23,14 +24,14 @@ namespace ShackLab
 
         private static void OnBuildListChanged()
         {
-            cachedScenes.Clear();
+            CachedScenes.Clear();
             int buildIndex = -1;
             foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
             {
                 SceneAsset sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
 
                 if (sceneAsset != null)
-                    cachedScenes.Add(sceneAsset, scene.enabled ? ++buildIndex : -1);
+                    CachedScenes.Add(sceneAsset, scene.enabled ? ++buildIndex : -1);
             }
         }
 
@@ -39,7 +40,7 @@ namespace ShackLab
             if (property.propertyType != SerializedPropertyType.ObjectReference) return;
             if (property.objectReferenceValue is not SceneAsset sceneAsset) return;
 
-            bool on = RuntimeSceneUtility.cachedScenes.ContainsKey(sceneAsset);
+            bool on = CachedScenes.ContainsKey(sceneAsset);
             string scenePath = AssetDatabase.GetAssetPath(sceneAsset);
 
             menu.AddItem(new GUIContent("Add to Build Settings"), on, () =>
@@ -67,3 +68,4 @@ namespace ShackLab
         }
     }
 }
+#endif
