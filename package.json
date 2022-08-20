@@ -22,7 +22,7 @@
     "url": "https://github.com/marc-antoine-girard/Unity3D-RuntimeScene.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@marc-antoine-girard"
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
