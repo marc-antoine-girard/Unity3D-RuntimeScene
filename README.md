@@ -38,11 +38,13 @@ Main features:
 
 ### Using OpenUPM
 
+> Incoming
+
 ## Usage
 
-**Note**: If you're using Assemblies, don't forget to reference `ShackLab.RuntimeScene`
+> **Note** If you're using Assemblies, don't forget to reference `ShackLab.RuntimeScene`
 
-Here's a simple example on how to use RuntimeScene. Each methods in RuntimeScene have many overloads, most mirroring `SceneManager.LoadScene` and `SceneManager.LoadSceneAsync`.
+Here's a simple example on how to use RuntimeScene:
 
 ```csharp
 public class LoadScene : MonoBehaviour
@@ -57,45 +59,27 @@ public class LoadScene : MonoBehaviour
     }
 }
 ```
+Each methods in RuntimeScene have many overloads, most mirroring `SceneManager.LoadScene` and `SceneManager.LoadSceneAsync`.
 
-You can also use `SceneManager`, but it is not recommended.
+![image](https://user-images.githubusercontent.com/62125329/185726016-3e3b8e08-9649-4c7e-8758-21e6ae85f3de.png)
 
-```csharp
-public class LoadScene : MonoBehaviour
-{
-    public RuntimeScene scene;
-    void Start()
-    {
-        // Load by name
-        SceneManager.LoadScene(scene.Name);
-
-        // Load by build index
-        SceneManager.LoadScene(scene.BuildIndex);
-    }
-}
-```
-
+You can also use `SceneManager`'s methods to load scenes, but it is **not recommended.** 
 The biggest advantages of using RuntimeScene's methods over SceneManager are:
 
-- It uses the build Index instead of scene name, which avoids unnexpected behaviour when [Build Settings contains multiple scenes with the same name](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html#:~:text=The%20given%20sceneName,the%20full%20path.)
-  
-- In the editor, it will load the scene **even if it is not in the Build Settings**
-  
+- In Build, RuntimeScene uses the build Index by default instead of the scene's name, which avoids unnexpected behaviour when [Build Settings contains multiple scenes with the same name](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html#:~:text=The%20given%20sceneName,the%20full%20path.)
+- In the Editor, Scenes will load **even if not in the Build Settings.**
   - The intent behind this decision is to allow faster testing in some situation.
-    
   - Note that loading a scene that is not in the Build Settings will throw a warning in the Editor, letting you know this won't work in build.
     
-  
-  > Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
-  
-
-You will get a warning if RuntimeScene is referencing a Scene not in Build Settings
-
-(image here)
+    > **Warning** | Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
+    
+## Editor Tools
+You will also get a warning box under the RuntimeScene when referencing a Scene that is not in Build Settings
+![image](https://user-images.githubusercontent.com/62125329/185725959-067f4c64-eb16-44a8-a4af-bfc9334717db.png)
 
 You can quickly add or remove the Scene using the Context Menu (right-click):
 
-(image here)
+![image](https://user-images.githubusercontent.com/62125329/185725977-e1b07dc2-e92a-4abe-926a-f000590b598f.png)![image](https://user-images.githubusercontent.com/62125329/185725988-7b5e7148-c808-49b0-ae51-0ec30d28c99c.png)
 
 ## RuntimeScene Methods
 
@@ -107,6 +91,21 @@ public void LoadScene(LoadSceneParameters parameters);
 public AsyncOperation LoadSceneAsync(bool allowSceneActivation = true);
 public AsyncOperation LoadSceneAsync(LoadSceneMode mode, bool allowSceneActivation = true);
 public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters, bool allowSceneActivation = true);
+```
+---
+## Addressables
+
+When using scenes with Addressables, you can use `AssetReferenceScene`.
+> **Note** AssetReferenceScene is only available when Addressables is in the project.
+```csharp
+public class LoadScene : MonoBehaviour
+{
+    public AssetReferenceScene scene;
+    void Start()
+    {
+        scene.LoadSceneAsync();
+    }
+}
 ```
 
 ## Contributions
