@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.3.0...v1.4.0) (2022-08-20)
+
+
+### Features
+
+* will I ever ([5c95193](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/5c95193ac81388b7ced770f44330238820da7597))
+
 ## [1.3.0](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.2.0...v1.3.0) (2022-08-20)
 
 
