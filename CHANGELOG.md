@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.2.0...v1.3.0) (2022-08-20)
+
+
+### Features
+
+* aws ([cc2b324](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/cc2b3243ce2618bee0237f0455d0f9e7e2bf687c))
+
 ## [1.2.0](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.1.0...v1.2.0) (2022-08-20)
 
 
