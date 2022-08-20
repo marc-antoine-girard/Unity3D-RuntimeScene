@@ -1,3 +1,10 @@
+### [1.4.4](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.3...v1.4.4) (2022-08-20)
+
+
+### Bug Fixes
+
+* added openupm ([7ab9662](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/7ab9662444249f3b73d9463e7fd682187658a0a7))
+
 ### [1.4.3](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.2...v1.4.3) (2022-08-20)
 
 
