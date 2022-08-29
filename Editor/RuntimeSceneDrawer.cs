@@ -49,9 +49,8 @@ namespace ShackLab
         {
             Rect rect = new Rect(position)
             {
-                height = EditorGUI.GetPropertyHeight(sceneAssetProp, true)
+                height = EditorGUI.GetPropertyHeight(sceneAssetProp, false)
             };
-
             EditorGUI.PropertyField(rect, sceneAssetProp, label);
         }
 

@@ -10,20 +10,22 @@
         <img alt="GitHub license" src ="https://img.shields.io/github/license/marc-antoine-girard/Unity3D-RuntimeScene" />
     </a>
     <img alt="GitHub last commit" src ="https://img.shields.io/github/last-commit/marc-antoine-girard/Unity3D-RuntimeScene" />
+    <a href="https://openupm.com/packages/com.marc-antoine-girard.runtimescene/">
+        <img src="https://img.shields.io/npm/v/com.marc-antoine-girard.runtimescene?label=openupm&registry_uri=https://package.openupm.com" />
+    </a>
 </p>
 
 # Unity3D-RuntimeScene
 
 A simple class that lets you reference scenes in the Editor.
 
-### Main features:
+### Summary
 
 - Allows referencing scenes in Unity's Inspector
 - Avoids scene name conflicts when using RuntimeScene methods
 - The resulting RuntimeScene instances in build are super lightweight
 - In the editor, allows loading scene not in Build Settings
 - Add or remove scenes from Build Settings using the Context Menu
-  
 
 ## Installation
 
@@ -35,6 +37,7 @@ A simple class that lets you reference scenes in the Editor.
 #### Using OpenUPM
 
 The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+
 ```
 openupm add com.marc-antoine-girard.runtimescene
 ```
@@ -58,6 +61,7 @@ public class LoadScene : MonoBehaviour
     }
 }
 ```
+
 Each methods in RuntimeScene have many overloads, most mirroring `SceneManager.LoadScene` and `SceneManager.LoadSceneAsync`.
 
 ![image](https://user-images.githubusercontent.com/62125329/185726016-3e3b8e08-9649-4c7e-8758-21e6ae85f3de.png)
@@ -66,13 +70,17 @@ You can also use `SceneManager`'s methods to load scenes, but it is **not recomm
 The biggest advantages of using RuntimeScene's methods over SceneManager are:
 
 - In Build, RuntimeScene uses the build Index by default instead of the scene's name, which avoids unnexpected behaviour when [Build Settings contains multiple scenes with the same name](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html#:~:text=The%20given%20sceneName,the%20full%20path.)
+
 - In the Editor, Scenes will load **even if not in the Build Settings.**
+  
   - The intent behind this decision is to allow faster testing in some situation.
+  
   - Note that loading a scene that is not in the Build Settings will throw a warning in the Editor, letting you know this won't work in build.
     
     > **Warning** | Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
-    
-## Editor Tools
+
+### Editor Tools
+
 You will also get a warning box under the RuntimeScene when referencing a Scene that is not in Build Settings
 ![image](https://user-images.githubusercontent.com/62125329/185725959-067f4c64-eb16-44a8-a4af-bfc9334717db.png)
 
@@ -80,7 +88,7 @@ You can quickly add or remove the Scene using the Context Menu (right-click):
 
 ![image](https://user-images.githubusercontent.com/62125329/185725977-e1b07dc2-e92a-4abe-926a-f000590b598f.png)![image](https://user-images.githubusercontent.com/62125329/185725988-7b5e7148-c808-49b0-ae51-0ec30d28c99c.png)
 
-## RuntimeScene Methods
+### RuntimeScene Methods
 
 ```csharp
 public void LoadScene();
@@ -91,11 +99,15 @@ public AsyncOperation LoadSceneAsync(bool allowSceneActivation = true);
 public AsyncOperation LoadSceneAsync(LoadSceneMode mode, bool allowSceneActivation = true);
 public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters, bool allowSceneActivation = true);
 ```
+
 ---
-## Addressables
+
+### Addressables
 
 When using scenes with Addressables, you can use `AssetReferenceScene`.
+
 > **Note** AssetReferenceScene is only available when Addressables is in the project.
+
 ```csharp
 public class LoadScene : MonoBehaviour
 {
