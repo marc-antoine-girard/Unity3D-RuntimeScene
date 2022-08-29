@@ -1,3 +1,10 @@
+### [1.4.5](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.4...v1.4.5) (2022-08-29)
+
+
+### Bug Fixes
+
+* tooltip not showing + variable name always showing SceneAsset ([a48d76d](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/a48d76d49db8616e9544eeeb04cb81b7f7ccdc21))
+
 ### [1.4.4](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.3...v1.4.4) (2022-08-20)
 
 
