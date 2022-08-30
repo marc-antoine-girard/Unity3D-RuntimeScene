@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ShackLab
 {
     [CustomPropertyDrawer(typeof(RuntimeScene))]
-    public class RuntimeSceneDrawer : PropertyDrawer
+    public partial class RuntimeSceneDrawer : PropertyDrawer
     {
         private SerializedProperty serializedProperty;
         private SerializedProperty sceneAssetProp;
@@ -20,7 +20,7 @@ namespace ShackLab
 
         private float GetHeight()
         {
-            return buildIndex.intValue < 0 && sceneAssetProp.objectReferenceValue != null ? 54 : 18;
+            return buildIndex.intValue < 0 && sceneAssetProp.objectReferenceValue != null ? 60 : 18;
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -39,9 +39,17 @@ namespace ShackLab
             {
                 Rect newPos = new Rect(position)
                 {
-                    yMin = position.y + 22
+                    yMin = position.y + 22,
+                    height = 38
                 };
-                EditorGUI.HelpBox(newPos, "Scene is not in Build Settings", MessageType.Warning);
+                
+                GUIContent content = new GUIContent
+                {
+                    text = "Scene is not in Build Settings",
+                    tooltip = "Right-Click to Add to Build Settings",
+                    image = Styles.GetHelpIcon(MessageType.Warning)
+                };
+                EditorGUI.LabelField(newPos, content, EditorStyles.helpBox);
             }
         }
 

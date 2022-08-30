@@ -44,7 +44,7 @@ namespace ShackLab
 
         private void LoadSceneEditor(LoadSceneParameters parameters)
         {
-            if (buildIndex < 0)
+            if (!IsInBuild())
             {
                 Log(
                     $"Scene {sceneAsset.name} is not in the build settings. Consider adding it if you plan on using it in a build",
@@ -56,7 +56,7 @@ namespace ShackLab
 
         private AsyncOperation LoadSceneAsyncEditor(LoadSceneParameters parameters, bool allowSceneActivation = true)
         {
-            if (buildIndex < 0)
+            if (!IsInBuild())
             {
                 Log(
                     $"Scene {sceneAsset.name} is not in the build settings. Consider adding it if you plan on using it in a build",
@@ -85,6 +85,8 @@ namespace ShackLab
 
         public string Name => name;
         public int BuildIndex => buildIndex;
+
+        public bool IsInBuild() => buildIndex <= 0;
 
         public void LoadScene()
         {
@@ -118,7 +120,7 @@ namespace ShackLab
 
         private void LoadSceneInternal(LoadSceneParameters parameters)
         {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_LOAD_EDITOR
             LoadSceneEditor(parameters);
 #else
             SceneManager.LoadScene(buildIndex, parameters);
@@ -127,7 +129,7 @@ namespace ShackLab
 
         private AsyncOperation LoadSceneAsyncInternal(LoadSceneParameters parameters, bool allowSceneActivation = true)
         {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !DISABLE_LOAD_EDITOR
             return LoadSceneAsyncEditor(parameters, allowSceneActivation);
 #else
             AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync(buildIndex, parameters);

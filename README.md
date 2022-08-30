@@ -19,7 +19,7 @@
 
 A simple class that lets you reference scenes in the Editor.
 
-### Summary
+## Summary
 
 - Allows referencing scenes in Unity's Inspector
 - Avoids scene name conflicts when using RuntimeScene methods
@@ -29,12 +29,12 @@ A simple class that lets you reference scenes in the Editor.
 
 ## Installation
 
-#### Using git
+### Using git
 
 - In Window -> Package Manager -> Add package from git URL...
 - Paste `https://github.com/marc-antoine-girard/Unity3D-RuntimeScene.git`
 
-#### Using OpenUPM
+### Using OpenUPM
 
 The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
@@ -62,21 +62,21 @@ public class LoadScene : MonoBehaviour
 }
 ```
 
-Each methods in RuntimeScene have many overloads, most mirroring `SceneManager.LoadScene` and `SceneManager.LoadSceneAsync`.
+RuntimeScene has many overloaded methods, most mirroring `SceneManager.LoadScene` and `SceneManager.LoadSceneAsync`.
 
 ![image](https://user-images.githubusercontent.com/62125329/185726016-3e3b8e08-9649-4c7e-8758-21e6ae85f3de.png)
 
-You can also use `SceneManager`'s methods to load scenes, but it is **not recommended.** 
+You can also use `SceneManager`'s methods to load scenes, but it is **NOT RECOMMENDED**.
+
 The biggest advantages of using RuntimeScene's methods over SceneManager are:
 
 - In Build, RuntimeScene uses the build Index by default instead of the scene's name, which avoids unnexpected behaviour when [Build Settings contains multiple scenes with the same name](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html#:~:text=The%20given%20sceneName,the%20full%20path.)
 
 - In the Editor, Scenes will load **even if not in the Build Settings.**
-  
   - The intent behind this decision is to allow faster testing in some situation.
-  
   - Note that loading a scene that is not in the Build Settings will throw a warning in the Editor, letting you know this won't work in build.
-    
+  - If you want to opt-out of this feature, you can define "**DISABLE_LOAD_EDITOR**" `Edit -> Project Settings -> Player -> Other Settings -> Scripting Define Symbols`
+
     > **Warning** | Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
 
 ### Editor Tools
