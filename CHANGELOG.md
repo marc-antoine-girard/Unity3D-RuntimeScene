@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.5...v1.5.0) (2022-08-30)
+
+
+### Features
+
+* Added support for collections ([2650cfc](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/2650cfcdfd31be94faacf9d0cc7070274ebbb44d))
+
 ### [1.4.5](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.4...v1.4.5) (2022-08-29)
 
 
