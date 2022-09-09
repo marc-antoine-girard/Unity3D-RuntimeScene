@@ -1,3 +1,10 @@
+### [1.5.1](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.5.0...v1.5.1) (2022-09-09)
+
+
+### Bug Fixes
+
+* code cleanup + SceneAttribute prototype ([8ff5c40](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/8ff5c403755db877dbccf16a6169532520ec6d36))
+
 ## [1.5.0](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.4.5...v1.5.0) (2022-08-30)
 
 
