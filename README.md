@@ -13,6 +13,8 @@
     <a href="https://openupm.com/packages/com.marc-antoine-girard.runtimescene/">
         <img src="https://img.shields.io/npm/v/com.marc-antoine-girard.runtimescene?label=openupm&registry_uri=https://package.openupm.com" />
     </a>
+    <a href="https://www.codacy.com/gh/marc-antoine-girard/Unity3D-RuntimeScene/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marc-antoine-girard/Unity3D-RuntimeScene&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/bfb6566973e14907a06ec82ea35016ea"/>
+    </a>
 </p>
 
 # Unity3D-RuntimeScene
@@ -38,7 +40,9 @@ A simple class that lets you reference scenes in the Editor.
 
 The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
-    openupm add com.marc-antoine-girard.runtimescene
+```
+openupm add com.marc-antoine-girard.runtimescene
+```
 
 ## Usage
 
