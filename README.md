@@ -21,26 +21,24 @@ A simple class that lets you reference scenes in the Editor.
 
 ## Summary
 
-- Allows referencing scenes in Unity's Inspector
-- Avoids scene name conflicts when using RuntimeScene methods
-- The resulting RuntimeScene instances in build are super lightweight
-- In the editor, allows loading scene not in Build Settings
-- Add or remove scenes from Build Settings using the Context Menu
+-   Allows referencing scenes in Unity's Inspector
+-   Avoids scene name conflicts when using RuntimeScene methods
+-   The resulting RuntimeScene instances in build are super lightweight
+-   In the editor, allows loading scene not in Build Settings
+-   Add or remove scenes from Build Settings using the Context Menu
 
 ## Installation
 
 ### Using git
 
-- In Window -> Package Manager -> Add package from git URL...
-- Paste `https://github.com/marc-antoine-girard/Unity3D-RuntimeScene.git`
+-   In Window -> Package Manager -> Add package from git URL...
+-   Paste `https://github.com/marc-antoine-girard/Unity3D-RuntimeScene.git`
 
 ### Using OpenUPM
 
 The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
-```
-openupm add com.marc-antoine-girard.runtimescene
-```
+    openupm add com.marc-antoine-girard.runtimescene
 
 ## Usage
 
@@ -70,14 +68,15 @@ You can also use `SceneManager`'s methods to load scenes, but it is **NOT RECOMM
 
 The biggest advantages of using RuntimeScene's methods over SceneManager are:
 
-- In Build, RuntimeScene uses the build Index by default instead of the scene's name, which avoids unnexpected behaviour when [Build Settings contains multiple scenes with the same name](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html#:~:text=The%20given%20sceneName,the%20full%20path.)
+-   In Build, RuntimeScene uses the build Index by default instead of the scene's name, which avoids unnexpected behaviour when [Build Settings contains multiple scenes with the same name](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html#:~:text=The%20given%20sceneName,the%20full%20path.)
 
-- In the Editor, Scenes will load **even if not in the Build Settings.**
-  - The intent behind this decision is to allow faster testing in some situation.
-  - Note that loading a scene that is not in the Build Settings will throw a warning in the Editor, letting you know this won't work in build.
-  - If you want to opt-out of this feature, you can define "**DISABLE_LOAD_EDITOR**" `Edit -> Project Settings -> Player -> Other Settings -> Scripting Define Symbols`
+-   In the Editor, Scenes will load **even if not in the Build Settings.**
 
-    > **Warning** | Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
+    -   The intent behind this decision is to allow faster testing in some situation.
+    -   Note that loading a scene that is not in the Build Settings will throw a warning in the Editor, letting you know this won't work in build.
+    -   If you want to opt-out of this feature, you can define "**DISABLE_LOAD_EDITOR**" `Edit -> Project Settings -> Player -> Other Settings -> Scripting Define Symbols`
+
+        > **Warning** | Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
 
 ### Editor Tools
 
@@ -100,7 +99,7 @@ public AsyncOperation LoadSceneAsync(LoadSceneMode mode, bool allowSceneActivati
 public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters, bool allowSceneActivation = true);
 ```
 
----
+* * *
 
 ### Addressables
 

@@ -6,7 +6,7 @@ namespace ShackLab
 {
     public partial class RuntimeSceneDrawer
     {
-        public static class Styles
+        private static class Styles
         {
             private static MethodInfo getHelpIconMethod;
             private static Texture warningIcon;
@@ -40,11 +40,10 @@ namespace ShackLab
                 switch (type)
                 {
                     case MessageType.Info:
-                    // return EditorGUIUtility.infoIcon;
+                    case MessageType.Error:
+                    case MessageType.None:
                     case MessageType.Warning:
                         return WarningIcon;
-                    case MessageType.Error:
-                    // return EditorGUIUtility.errorIcon;
                     default:
                         return null;
                 }

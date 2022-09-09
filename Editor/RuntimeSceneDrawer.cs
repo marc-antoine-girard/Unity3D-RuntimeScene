@@ -65,7 +65,9 @@ namespace ShackLab
         private void Initialize(SerializedProperty property)
         {
             if (serializedProperty == property)
+            {
                 return;
+            }
 
             serializedProperty = property;
             sceneAssetProp = property.FindPropertyRelative("sceneAsset");

@@ -18,13 +18,10 @@ namespace ShackLab
             name = GetName(sceneAsset);
         }
 
-        private static string GetScenePath(SceneAsset scene)
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            if (scene == null) return string.Empty;
-            return AssetDatabase.GetAssetPath(scene);
+            // Do nothing because we only care about the BeforeSerialize
         }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize() { }
 
         private static int GetBuildIndex(SceneAsset sceneAsset)
         {
@@ -103,17 +100,32 @@ namespace ShackLab
             LoadSceneInternal(parameters);
         }
 
-        public AsyncOperation LoadSceneAsync(bool allowSceneActivation = true)
+        public AsyncOperation LoadSceneAsync()
+        {
+            return LoadSceneAsyncInternal(new LoadSceneParameters(), true);
+        }
+
+        public AsyncOperation LoadSceneAsync(bool allowSceneActivation)
         {
             return LoadSceneAsyncInternal(new LoadSceneParameters(), allowSceneActivation);
         }
 
-        public AsyncOperation LoadSceneAsync(LoadSceneMode mode, bool allowSceneActivation = true)
+        public AsyncOperation LoadSceneAsync(LoadSceneMode mode)
+        {
+            return LoadSceneAsyncInternal(new LoadSceneParameters(mode), true);
+        }
+
+        public AsyncOperation LoadSceneAsync(LoadSceneMode mode, bool allowSceneActivation)
         {
             return LoadSceneAsyncInternal(new LoadSceneParameters(mode), allowSceneActivation);
         }
 
-        public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters, bool allowSceneActivation = true)
+        public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters)
+        {
+            return LoadSceneAsyncInternal(parameters, true);
+        }
+
+        public AsyncOperation LoadSceneAsync(LoadSceneParameters parameters, bool allowSceneActivation)
         {
             return LoadSceneAsyncInternal(parameters, allowSceneActivation);
         }
@@ -127,7 +139,7 @@ namespace ShackLab
 #endif
         }
 
-        private AsyncOperation LoadSceneAsyncInternal(LoadSceneParameters parameters, bool allowSceneActivation = true)
+        private AsyncOperation LoadSceneAsyncInternal(LoadSceneParameters parameters, bool allowSceneActivation)
         {
 #if UNITY_EDITOR && !DISABLE_LOAD_EDITOR
             return LoadSceneAsyncEditor(parameters, allowSceneActivation);
