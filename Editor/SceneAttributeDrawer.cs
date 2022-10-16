@@ -38,7 +38,10 @@ namespace ShackLab
 
             var color = GUI.color;
 
-            if (!isInBuild) GUI.color = Color.red;
+            if (!isInBuild)
+            {
+                GUI.color = Color.red;
+            }
 
             var popup = EditorGUI.Popup(position, label.text, indexOf, cachedScenesKeys.ToArray());
 

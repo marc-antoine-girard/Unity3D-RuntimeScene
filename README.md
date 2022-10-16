@@ -1,20 +1,22 @@
 <p align="center">
     <img alt="GitHub package.json version" src ="https://img.shields.io/github/package-json/v/marc-antoine-girard/Unity3D-RuntimeScene" />
+    <a href="https://openupm.com/packages/com.marc-antoine-girard.runtimescene/">
+        <img src="https://img.shields.io/npm/v/com.marc-antoine-girard.runtimescene?label=openupm&registry_uri=https://package.openupm.com" />
+    </a>
+    <br>
     <a href="https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/issues">
         <img alt="GitHub issues" src ="https://img.shields.io/github/issues/marc-antoine-girard/Unity3D-RuntimeScene" />
     </a>
     <a href="https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/pulls">
         <img alt="GitHub pull requests" src ="https://img.shields.io/github/issues-pr/marc-antoine-girard/Unity3D-RuntimeScene" />
     </a>
+    <img alt="GitHub last commit" src ="https://img.shields.io/github/last-commit/marc-antoine-girard/Unity3D-RuntimeScene" />
     <a href="https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/blob/main/LICENSE.md">
         <img alt="GitHub license" src ="https://img.shields.io/github/license/marc-antoine-girard/Unity3D-RuntimeScene" />
     </a>
-    <img alt="GitHub last commit" src ="https://img.shields.io/github/last-commit/marc-antoine-girard/Unity3D-RuntimeScene" />
-    <a href="https://openupm.com/packages/com.marc-antoine-girard.runtimescene/">
-        <img src="https://img.shields.io/npm/v/com.marc-antoine-girard.runtimescene?label=openupm&registry_uri=https://package.openupm.com" />
-    </a>
     <a href="https://www.codacy.com/gh/marc-antoine-girard/Unity3D-RuntimeScene/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marc-antoine-girard/Unity3D-RuntimeScene&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/bfb6566973e14907a06ec82ea35016ea"/>
     </a>
+
 </p>
 
 # Unity3D-RuntimeScene
@@ -40,7 +42,7 @@ A simple class that lets you reference scenes in the Editor.
 
 The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
-```
+```curl
 openupm add com.marc-antoine-girard.runtimescene
 ```
 
@@ -77,7 +79,9 @@ The biggest advantages of using RuntimeScene's methods over SceneManager are:
 -   In the Editor, Scenes will load **even if not in the Build Settings.**
 
     -   The intent behind this decision is to allow faster testing in some situation.
+
     -   Note that loading a scene that is not in the Build Settings will throw a warning in the Editor, letting you know this won't work in build.
+
     -   If you want to opt-out of this feature, you can define "**DISABLE_LOAD_EDITOR**" `Edit -> Project Settings -> Player -> Other Settings -> Scripting Define Symbols`
 
         > **Warning** | Scene {scene name} is not in the build settings. Consider adding it if you plan on using it in build
@@ -125,3 +129,5 @@ public class LoadScene : MonoBehaviour
 ## Contributions
 
 Pull requests are welcomed. Please feel free to fix any issues you find, or add new features.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R6EBROQ)

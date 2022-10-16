@@ -83,7 +83,7 @@ namespace ShackLab
         public string Name => name;
         public int BuildIndex => buildIndex;
 
-        public bool IsInBuild() => buildIndex <= 0;
+        public bool IsInBuild() => buildIndex >= 0;
 
         public void LoadScene()
         {
