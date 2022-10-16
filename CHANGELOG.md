@@ -1,3 +1,10 @@
+### [1.5.2](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.5.1...v1.5.2) (2022-10-16)
+
+
+### Bug Fixes
+
+* showing scene not in build when it is ([b9c810e](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/commit/b9c810e04802810702b37852d9f5238b2a7603cc))
+
 ### [1.5.1](https://github.com/marc-antoine-girard/Unity3D-RuntimeScene/compare/v1.5.0...v1.5.1) (2022-09-09)
 
 
